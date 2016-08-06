@@ -1,0 +1,42 @@
+# This is so totally NOT for production. Just a set of totally sane defaults for
+# getting up and running.
+#
+# For the cd path, be sure to change it to the path of your choosing
+# Be sure to change the db name on all database elements
+#
+# `ansible-galaxy install -r ansible/galaxy_requirements.txt`
+# `vagrant up`
+# `vagrant ssh web`
+# `cd /opt/projects/projectname` -- change to app path i.e. /opt/projects/personal-website
+# `rake db:migrate`
+
+# Code
+- hosts: web
+  sudo: true
+  roles:
+    - common
+    - { role: rvm_io.rvm1-ruby, sudo: True, rvm1_rubies: ['ruby-2.3.1'], rvm1_user: 'root' }
+    # - { role: crushlovely.imagemagick }
+    - projectname
+
+- hosts: db
+  sudo: true
+  roles:
+    - common
+    - { role: ANXS.postgresql, postgresql_databases:       [{ name: projectname, hstore: no, uuid_ossp: no }, { name: projectname-test, hstore: no, uuid_ossp: no }],
+                               postgresql_users:           [{ name: test, pass: secret, encrypted: no }],
+                               postgresql_user_privileges: [{ name: test, db: projectname, priv: ALL, role_attr_flags: SUPERUSER },
+                                                            { name: test, db: projectname-test, priv: ALL, role_attr_flags: SUPERUSER },
+                                                            { name: postgres, db: projectname, priv: ALL, role_attr_flags: SUPERUSER },
+                                                            { name: postgres, db: projectname-test, priv: ALL, role_attr_flags: SUPERUSER }],
+                               postgresql_listen_addresses: '*',
+                               postgresql_pg_hba_default:  [{ type: local, user: postgres, database: postgres, comment: test, address: '', method: trust },
+                                                            { type: host,  database: postgres, user: test, address: '192.168.12.10/32', method: '{{ postgresql_default_auth_method }}', comment: 'IPv4 local connections:' },
+                                                            { type: host,  database: projectname, user: test, address: '192.168.12.10/32', method: '{{ postgresql_default_auth_method }}', comment: 'IPv4 local connections:' },
+                                                            { type: host,  database: projectname-test, user: test, address: '192.168.12.10/32', method: '{{ postgresql_default_auth_method }}', comment: 'IPv4 local connections:' },
+                                                            { type: local, database: template1, user: postgres, comment: test, address: '', method: trust },
+                                                            { type: host, database: postgres, user: postgres, comment: test, address: 127.0.0.1/32, method: trust },
+                                                            { type: host, database: projectname, user: postgres, address: 127.0.0.1/32, comment: 'test', method: trust },
+                                                            { type: host, database: projectname-test, user: postgres, address: 127.0.0.1/32, comment: 'test', method: trust },
+                                                            { type: local, database: projectname, user: postgres, address: '', method: trust, comment: 'test' },
+                                                            { type: local, database: projectname-test, user: postgres, address: '', method: trust, comment: 'test' }] }

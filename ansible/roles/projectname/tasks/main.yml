@@ -1,0 +1,51 @@
+---
+- name: Install Bundler
+  sudo: true
+  gem: name=bundler
+       state=present
+
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: Install Bundle Dependencies
+  sudo: true
+  apt: pkg={{ item }}
+       state=present
+  with_items:
+    - mysql-client
+    - ruby-dev
+    - libmysql-ruby
+    - postgresql-client
+    - libpq-dev
+    - libmysqlclient-dev
+    - libav-tools
+    - git-core
+    - ffmpeg
+    - libqt4-dev
+    - sqlite3
+    - libsqlite3-dev
+    - pdftk
+    - nodejs
+    - gcc
+    - imagemagick
+
+- name: Install Rails
+  sudo: true
+  gem: name=rails
+       state=present
+
+- name: Install Bundle
+  sudo: false
+  command: bundle install chdir=/opt/projects/projectname # Chnage to desired path
+
+
+# - name: Set MOTD
+#   copy: src=motd.tail dest=/etc/motd.tail owner=root group=root
+
+# - name: Copy Env Vars to profile.d
+#   sudo: yes
+#   copy: src=../files/environment
+#         dest=/etc/environment
+#         owner=root
+#         group=root
+#         force=yes
