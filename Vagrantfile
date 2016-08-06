@@ -6,10 +6,10 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.forward_agent = true
 
-  config.vm.provider "vmware_fusion" do |v|
-    v.vmx["memsize"] = "1024"
-    v.vmx["numvcpus"] = "1"
-  end
+  # config.vm.provider "vmware_fusion" do |v|
+  #   v.vmx["memsize"] = "1024"
+  #   v.vmx["numvcpus"] = "1"
+  # end
 
   # config.vm.provider "parallels" do |v|
   #   v.vmx["memsize"] = "1024"

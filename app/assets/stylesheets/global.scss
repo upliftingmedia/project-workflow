@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:before {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.container {
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+  margin: 0 auto;
+}
