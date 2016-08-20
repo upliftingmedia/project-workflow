@@ -1,5 +1,35 @@
+$desktop-width: 1200px;
+$tablet-width: 768px;
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
 * {
   box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+// vars
+$lighter-grey: #F6F6F6;
+$light-grey: #E4E4E4;
+$dark-grey: #C3C3C3;
+$white: #FFFFFF;
+$text: #585858;
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
 }
 
 .clearfix:before,
@@ -13,11 +43,59 @@
 }
 
 .container {
-  max-width: 95%;
   margin: 0 auto;
+  width: 75%;
 }
 
-.text-center {
-  text-align: center;
+.container-small {
   margin: 0 auto;
+  width: 25%;
+}
+
+.alert, .notice {
+  text-align: center;
+}
+
+.center {
+  transform: translate(-50%, -50%);
+  position: relative;
+  left: 50%;
+  top: 50%;
+}
+
+.text-center { text-align: center; }
+.hidden { display: none; }
+.bold { font-weight: 700; }
+
+.title {
+  @extend .text-center;
+  padding: 30px;
+  color: $text;
+}
+
+.title-left {
+  padding: 10px 0;
+  color: $text;
+}
+
+.center-100 { width: 100%; }
+
+p {
+  color: $dark-grey;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: $text;
+}
+
+// buttons
+.button {
+  border-radius: 2px;
+  padding: 8px 20px;
+  margin: 5px auto;
+  color: $white;
+  height: 50px;
+  border: 0;
 }
