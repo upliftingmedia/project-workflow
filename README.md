@@ -1,4 +1,4 @@
-# rails Starter
+# Project Workflow
 
 This is a website starter that can be used to create Ruby and Ruby on Rails applications using Vagrant.
 
