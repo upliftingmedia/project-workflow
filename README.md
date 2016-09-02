@@ -47,10 +47,17 @@ This starter uses:
 
 7. Have fun coding!
 
-# CSS Wizardry Grid
-This quick starter is using the CSS Wizardry Grid as it's base grid system, comments are inside the ```_grid.scss``` file to show how to use the grid.
+# Grid Options
+
+## CSS Wizardry Grid
+One option that is available is the CSS Wizardry Grid, comments are inside the ```_css_wizardry.scss``` file to show how to use the grid.
 
 [https://github.com/csswizardry/csswizardry-grids](https://github.com/csswizardry/csswizardry-grids)
+
+## Toast Grid
+The second available option is the Toast Grid, this is an extremely simple to use, again comments are inside the ```_toast_grid.scss``` on how to use the grid.
+
+#### NOTE: Both options are ready to use, just swap out the option that is not needed and delete the corresponding stylesheet and line from the ```application.scss```.
 
 
 
