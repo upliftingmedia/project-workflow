@@ -8,23 +8,16 @@
 #
 default: &default
   adapter: postgresql
-  pool: 5
-  timeout: 5000
   host: 192.168.12.11
-  user: test
   password: secret
   encoding: utf8
+  timeout: 5000
+  user: test
+  pool: 5
 
 development:
   <<: *default
   database: projectname
-  adapter: postgresql
-  host: 192.168.12.11
-  password: secret
-  encoding: utf8
-  timeout: 5000
-  user: test
-  pool: 5
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
