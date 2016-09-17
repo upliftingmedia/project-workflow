@@ -1,9 +1,7 @@
 # Project Workflow
 
 ### Status
-[![Build Status](https://semaphoreci.com/api/v1/upliftingmedia/project-workflow/branches/master/shields_badge.svg)](https://semaphoreci.com/upliftingmedia/project-workflow)
-
-[![Code Climate](https://codeclimate.com/github/upliftingmedia/project-workflow/badges/gpa.svg)](https://codeclimate.com/github/upliftingmedia/project-workflow)
+[![Build Status](https://semaphoreci.com/api/v1/upliftingmedia/project-workflow/branches/master/shields_badge.svg)](https://semaphoreci.com/upliftingmedia/project-workflow) | [![Code Climate](https://codeclimate.com/github/upliftingmedia/project-workflow/badges/gpa.svg)](https://codeclimate.com/github/upliftingmedia/project-workflow)
 
 This is a website starter that can be used to create Ruby and Ruby on Rails applications using Vagrant.
 
